@@ -1,0 +1,23 @@
+# Ambiente virtual
+venv/
+
+# Dados e resultados
+outputs/
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# IDEs e sistema
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Logs e temporários
+*.log
+*.tmp 

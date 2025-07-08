@@ -96,4 +96,3 @@ O arquivo `test_preprocessing.py` testa o pipeline de pré-processamento.
 
 ---
 
-**Dúvidas ou sugestões? Fique à vontade para explorar os comentários nos códigos ou abrir uma issue!** 

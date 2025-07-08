@@ -1,7 +1,6 @@
 # Challenge Cancer - Pipeline de Diagnóstico de Câncer de Mama
 
-Este projeto implementa um pipeline completo de Machine Learning para análise e predição de câncer de mama a partir de dados clínicos. O objetivo é facilitar o entendimento e uso do processo, mesmo para quem não é especialista em programação ou ciência de dados.
-
+Este projeto implementa um pipeline completo de Machine Learning para análise e predição de câncer de mama a partir de dados clínicos.
 ## Visão Geral do Pipeline
 
 O pipeline é composto pelas seguintes etapas principais:

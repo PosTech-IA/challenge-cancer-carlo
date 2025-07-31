@@ -5,7 +5,7 @@
 #
 # Autor: [Seu Nome]
 # Data: [Data de modificação]
-
+from eda import run_cancer_eda
 from preprocessing import load_and_clean_data, preprocess_data, split_data  # Funções para preparar os dados
 from train import train_all_models  # Função para treinar modelos padrão
 from evaluate import evaluate_models, plot_feature_importance, explain_with_shap  # Funções para avaliar e interpretar modelos
@@ -20,9 +20,21 @@ from train_top_features import get_top_n_features, filter_features
 def main():
     print("🚀 INICIANDO PIPELINE...\n")
 
+    # Etapa 0: Análise exploratória de dados (EDA)
+    print("\n📊 Gerando gráficos de EDA...")
+    df_original = pd.read_csv("data/data.csv").drop(columns=["Unnamed: 32", "id"], errors="ignore")
+    run_cancer_eda(df_original)
+    print("📁 Gráficos salvos em: analysis/")
+
     # Etapa 1: Carregamento e pré-processamento dos dados
     # Lê o arquivo CSV, remove colunas desnecessárias, codifica e normaliza os dados
     df = load_and_clean_data()
+
+    # Etapa 0: Análise exploratória de dados (EDA)
+    print("\n📊 Gerando gráficos de EDA...")
+    df_original = pd.read_csv("data/data.csv").drop(columns=["Unnamed: 32", "id"], errors="ignore")
+    run_cancer_eda(df_original)
+    print("📁 Gráficos salvos em: analysis/")
     X, y = preprocess_data(df)
     X_train, X_test, y_train, y_test = split_data(X, y)
     print(f"✔️ Treino: {X_train.shape[0]} | Teste: {X_test.shape[0]}")

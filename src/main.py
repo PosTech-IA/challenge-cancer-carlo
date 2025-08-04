@@ -9,7 +9,15 @@ from eda import run_cancer_eda
 from preprocessing import load_and_clean_data, preprocess_data, split_data  # Funções para preparar os dados
 from train import train_all_models  # Função para treinar modelos padrão
 from evaluate import evaluate_models, plot_feature_importance, explain_with_shap  # Funções para avaliar e interpretar modelos
-from optimize import optimize_logistic_regression, optimize_decision_tree  # Funções para otimizar modelos
+# Importe as funções do seu arquivo optimize.py
+from optimize import (
+    optimize_logistic_regression,
+    optimize_decision_tree,
+    optimize_random_forest,
+    optimize_xgboost,
+    optimize_knn,
+    optimize_svm
+)
 import pandas as pd
 import joblib  # Para salvar e carregar modelos treinados
 import os
@@ -48,25 +56,31 @@ def main():
     print("\n🔧 OTIMIZANDO MODELOS COM VALIDAÇÃO CRUZADA...")
     models_optimized = {
         "Logistic Regression": optimize_logistic_regression(X_train, y_train),
-        "Decision Tree": optimize_decision_tree(X_train, y_train)
+        "Decision Tree": optimize_decision_tree(X_train, y_train),
+        "Random Forest": optimize_random_forest(X_train, y_train),
+        "XGBoost": optimize_xgboost(X_train, y_train),
+        "KNN": optimize_knn(X_train, y_train),
+        "SVM": optimize_svm(X_train, y_train)
     }
 
     # Etapa 4: Avaliação dos modelos padrão e otimizados
     print("\n📊 AVALIANDO MODELOS PADRÃO...")
-    evaluate_models(models_default, X_test, y_test)
+
+    feature_names = pd.read_csv('data/data.csv').drop(columns=['Unnamed: 32', 'id', 'diagnosis'])
+
+    evaluate_models(models_default, X_test, y_test,feature_names)
 
     print("\n📊 AVALIANDO MODELOS OTIMIZADOS...")
-    evaluate_models(models_optimized, X_test, y_test)
+    evaluate_models(models_optimized, X_test, y_test,feature_names)
 
     # Etapa 5: Interpretação da importância das variáveis (feature importance) para a árvore otimizada
     print("\n🌿 INTERPRETANDO ÁRVORE DE DECISÃO (OTIMIZADA)...")
     # Lê os nomes das colunas do arquivo original para exibir no gráfico
-    feature_names = pd.read_csv('data/data.csv').drop(columns=['Unnamed: 32', 'id', 'diagnosis']).columns
-    plot_feature_importance(models_optimized["Decision Tree"], feature_names, model_name="Decision_Tree_Optimizada")
+    #plot_feature_importance(models_optimized["Decision Tree"], feature_names, model_name="Decision_Tree_Optimizada")
 
     # Etapa 6: Explicação do modelo de regressão logística otimizada usando SHAP
-    print("\n🧠 Explicando Regressão Logística (otimizada) com SHAP...")
-    explain_with_shap(models_optimized["Logistic Regression"], X_train, feature_names, model_name="Regressao_Logistica_Otimizada")
+    #print("\n🧠 Explicando Regressão Logística (otimizada) com SHAP...")
+    #explain_with_shap(models_optimized["Logistic Regression"], X_train, feature_names, model_name="Regressao_Logistica_Otimizada")
 
     print("\n✅ Pipeline finalizado com sucesso.")
 

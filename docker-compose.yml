@@ -9,3 +9,4 @@ services:
     volumes:
       - ./reports:/usr/src/app/reports
       - ./analysis:/usr/src/app/analysis
+      - ./outputs:/usr/src/app/outputs

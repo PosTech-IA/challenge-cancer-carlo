@@ -75,17 +75,18 @@ O arquivo `test_preprocessing.py` testa o pipeline de pré-processamento.
 ### Localmente
 
 0. Ative o venv
-   `source venv/bin/activate `
+   `source venv/bin/activate`
 1. **Instale as dependências**:
    ```bash
    pip install -r requirements.txt
    ```
-2. **Coloque o arquivo de dados em `data/data.csv`** (ou ajuste o caminho nos scripts).
-3. **Execute o pipeline principal**:
+2. **Download do [dataset](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data/data)**
+3. **Coloque o arquivo de dados em `data/data.csv`** (ou ajuste o caminho nos scripts).
+4. **Execute o pipeline principal**:
    ```bash
    python src/main.py
    ```
-4. **Para testar um novo exame**:
+5. **Para testar um novo exame**:
    - Coloque o exame em `data/exame_novo.csv` (com as mesmas colunas do treino).
    - Execute:
      ```bash

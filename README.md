@@ -42,15 +42,14 @@ O pipeline é composto pelas seguintes etapas principais:
 
 ## Associação das Etapas do Pipeline com os Arquivos
 
-| Etapa                                         | Arquivo(s) Responsável(is)                 |
-| --------------------------------------------- | ------------------------------------------ |
-| 1. Carregamento e Pré-processamento dos Dados | `preprocessing.py`                         |
-| 2. Divisão dos Dados                          | `preprocessing.py`                         |
-| 3. Treinamento dos Modelos                    | `train.py`                                 |
-| 4. Avaliação dos Modelos                      | `evaluate.py`                              |
-| 5. Interpretação dos Modelos                  | `evaluate.py`, `explain_single.py`         |
-| 6. Salvamento dos Modelos                     | `train.py`, `main.py`                      |
-| 7. Predição e Explicação para Novos Exames    | `predict_from_csv.py`, `explain_single.py` |
+| Etapa                                         | Arquivo(s) Responsável(is)         |
+| --------------------------------------------- | ---------------------------------- |
+| 1. Carregamento e Pré-processamento dos Dados | `preprocessing.py`                 |
+| 2. Divisão dos Dados                          | `preprocessing.py`                 |
+| 3. Treinamento dos Modelos                    | `train.py`                         |
+| 4. Avaliação dos Modelos                      | `evaluate.py`                      |
+| 5. Interpretação dos Modelos                  | `evaluate.py`, `explain_single.py` |
+| 6. Salvamento dos Modelos                     | `train.py`, `main.py`              |
 
 O arquivo `main.py` orquestra todo o pipeline, chamando as funções dos arquivos acima na ordem correta.
 O arquivo `test_preprocessing.py` testa o pipeline de pré-processamento.
@@ -65,7 +64,6 @@ O arquivo `test_preprocessing.py` testa o pipeline de pré-processamento.
 - **evaluate.py**: Funções para avaliar os modelos, gerar gráficos e explicações.
 - **optimize.py**: Funções para otimizar os modelos usando busca de melhores parâmetros (GridSearchCV).
 - **explain_single.py**: Gera explicações SHAP para um exame individual (novo paciente).
-- **predict_from_csv.py**: Faz a predição do diagnóstico de um novo exame a partir de um arquivo CSV.
 - **test_preprocessing.py**: Testa o pipeline de pré-processamento para garantir que está funcionando corretamente.
 
 ---
@@ -86,16 +84,6 @@ O arquivo `test_preprocessing.py` testa o pipeline de pré-processamento.
    ```bash
    python src/main.py
    ```
-5. **Para testar um novo exame**:
-   - Coloque o exame em `data/exame_novo.csv` (com as mesmas colunas do treino).
-   - Execute:
-     ```bash
-     python src/predict_from_csv.py
-     ```
-   - Para explicação individual:
-     ```bash
-     python src/explain_single.py
-     ```
 
 ### Docker
 
